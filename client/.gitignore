@@ -19,3 +19,9 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Default File Vue App
+AppV.vue
+HomeV.vue
+AboutV.vue
+HelloWorldV.vue

@@ -1,23 +1,28 @@
 # e-commerce app
-E-Commerse built with Express and TDD
+E-Commerse built with Express, Mongoose, and TDD
 
-Tes memastikan produk telah berhasil dibuat
-Memastikan produk sudah disimpan muncul dalam daftar produk
-Memastikan berhasil menghapus sebuah produk
-Memastikan user berhasil login
-Memastikan orang yang login bisa memasukkan sesuatu ke dalam cart
+| Route              | HTTP   | Description                    | Authen | Authorz |
+|--------------------|--------|--------------------------------|--------|---------|
+| /register          | POST   | Register new user              | no     | no      |
+| /login             | POST   | Login user                     | no     | no      |
+| /glogin            | POST   | Login user by google account   | no     | no      |
+| /products          | GET    | Get all product documents      | no     | no      |
+| /products          | POST   | Create a product document      | yes    | admin   |
+| /products/:id      | GET    | Get a product document         | no     | no      |
+| /products/:id      | PUT    | Update all product doc fields  | yes    | admin   |
+| /products/:id      | PATCH  | Update some product doc fields | yes    | admin   |
+| /products/:id      | DELETE | Delete a product document      | yes    | admin   |
+| /carts             | GET    | Get all carts documents        | yes    | admin   |
+| /carts             | POST   | Create a cart document         | yes    | admin   |
+| /carts/:id         | GET    | Get a cart document            | yes    | admin   |
+| /carts/:id         | PUT    | Update all cart doc fields     | yes    | admin   |
+| /carts/:id         | PATCH  | Update some cart doc fields    | yes    | admin   |
+| /carts/:id         | DELETE | Delete a cart document         | yes    | admin   |
+| /user/carts        | GET    | Get authenticated user cart    | yes    | no      |
+| /user/carts        | POST   | Create authenticated user cart | yes    | no      |
+| /user/carts        | PATCH  | Update products in cart        | yes    | no      |
+| /user/carts        | DELETE | Delete authenticated user cart | yes    | no      |
 
-CRUD Produk
-Create dan delete Cart
-Customer Authentication
-
-| Route              | HTTP   | Description                                          |
-|--------------------|--------|------------------------------------------------------|
-| /user/products     | POST   | Create a product (authenticated and authorized user) |
-| /products          | GET    | Get all products list                                |
-| /user/products/:id | DELETE | Delete a product (authenticated and authorized user) |
-| /login             | POST   | Login to be authenticated user                       |
-| /user/carts        | POST   | Add product to authenticated user                    |
 
 ## Usage
 Make sure you have Node.js and npm installed in your computer and then run these commands:

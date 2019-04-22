@@ -1,16 +1,16 @@
 const express = require('express');
 const products = express.Router();
-const Product = require('../../models/product.js');
+const ProductController = require('../../controllers/product');
+const authentication = require('../../middlewares/authentication');
+const adminAuthor = require('../../middlewares/adminAuthor');
+const upload = require('../../middlewares/gUpload');
 
-products.get('/', (req, res) => {
-  Product.find({})
-    .then(products => {
-      res.status(200).json(products);
-    })
-    .catch(err => {
-      res.status(500).json({ err });
-    })
-})
+products.get('/', ProductController.all);
+products.post('/', authentication, adminAuthor, upload.multer.single('image'), upload.sendUploadToGCS, ProductController.create);
+products.get('/:id', ProductController.one);
+products.put('/:id', authentication, adminAuthor, upload.multer.single('image'), upload.sendUploadToGCS, ProductController.update);
+products.patch('/:id', authentication, adminAuthor, upload.multer.single('image'), upload.sendUploadToGCS, ProductController.update);
+products.delete('/:id', authentication, adminAuthor, ProductController.delete);
 
 
 module.exports = products;
